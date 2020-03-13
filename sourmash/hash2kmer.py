@@ -68,7 +68,7 @@ def get_kmer_in_hashes(hashvals, kmer):
         yield kmer, hashval
 
 
-def hash2kmer():
+def cli():
     p = argparse.ArgumentParser()
     p.add_argument('hashfile', help='file that contains hashes')
     p.add_argument('seqfiles', nargs='+',
@@ -175,4 +175,4 @@ def get_matching_hashes_in_file(filename, ksize, moltype, input_is_protein,
 
 
 if __name__ == '__main__':
-    sys.exit(hash2kmer())
+    sys.exit(cli())
