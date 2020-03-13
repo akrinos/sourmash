@@ -3,9 +3,6 @@
 An implementation of a MinHash bottom sketch, applied to k-mers in DNA.
 """
 from __future__ import print_function
-import re
-import math
-import os
 
 from ._lowlevel import ffi, lib
 
@@ -46,3 +43,4 @@ from . import signature
 from . import sig
 from . import cli
 from . import commands
+from . import hash2kmer
