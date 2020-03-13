@@ -57,11 +57,15 @@ def get_kmers_for_hashvals(sequence, hashvals, ksize, moltype,
         kmer = get_kmer_moltype(sequence, start, ksize, moltype,
                                 input_is_protein)
 
-        # NOTE: we do not avoid non-ACGT characters, because those k-mers,
-        # when hashed, shouldn't match anything that sourmash outputs.
-        hashval = hash_murmur(kmer)
-        if hashval in hashvals:
-            yield kmer, hashval
+        yield from get_kmer_in_hashes(hashvals, kmer)
+
+
+def get_kmer_in_hashes(hashvals, kmer):
+    # NOTE: we do not avoid non-ACGT characters, because those k-mers,
+    # when hashed, shouldn't match anything that sourmash outputs.
+    hashval = hash_murmur(kmer)
+    if hashval in hashvals:
+        yield kmer, hashval
 
 
 def hash2kmer():
