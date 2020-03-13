@@ -10,10 +10,10 @@ import sys
 
 import screed
 
-from ._minhash import hash_murmur
-from .cli.utils import add_construct_moltype_args
-from .logging import notify, error
-from .sourmash_args import calculate_moltype
+from sourmash._minhash import hash_murmur
+from sourmash.cli.utils import add_construct_moltype_args
+from sourmash.logging import notify, error
+from sourmash.sourmash_args import calculate_moltype
 
 NOTIFY_EVERY_BP = 1e7
 
@@ -172,3 +172,7 @@ def get_matching_hashes_in_file(filename, ksize, moltype, input_is_protein,
                                                    record.sequence))
                 m += len(record.sequence)
     return m, n
+
+
+if __name__ == '__main__':
+    sys.exit(hash2kmer())
